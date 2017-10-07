@@ -1,0 +1,3 @@
+# lifeCommand
+
+npm run start
