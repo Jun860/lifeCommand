@@ -6,7 +6,7 @@ function sql() {
     var params = {};
     this.insert = async function () {
         var res = await pgsql.insert(`"BBZ"."Mrecord"`, format_in.mode(params));
-        return res;
+        return res != 'error';
     }
     this.select = async function () {
         var temp_params = format_out.select_mode(params);
