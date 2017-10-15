@@ -6,7 +6,7 @@ function mode(params){
     if(params.action && check(params.action)){
         if(params.action == '旅游'){
             global.mode = {
-                where = params.where
+                where : params.where
             }
         }
         result.push(`'${params.action}'`);
