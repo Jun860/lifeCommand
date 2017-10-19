@@ -1,4 +1,6 @@
-function select_mode(params){
+function select_mode(params) {
+    if (params)
+        return {}
     var res = {};
     res.key = params.key;
     res.condition = params.condition;
@@ -6,5 +8,5 @@ function select_mode(params){
 }
 
 module.exports = {
-    select_mode:select_mode
+    select_mode: select_mode
 }
