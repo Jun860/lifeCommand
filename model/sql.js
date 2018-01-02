@@ -14,7 +14,7 @@ sql.prototype = {
     },
     select: async function (params) {
         var temp_params = {
-            key: `to_char(time,'YYYY-MM-DD') as time_day,action,things,money`,
+            key: `to_char(time,'MM-DD') as time_day,action,things,money`,
             condition: `where (extract(month from time) = (extract(month from now()- interval '${params.month} month'))) and (extract(year from time) = extract(year from now()- interval '${params.month} month')) ORDER BY time DESC limit ${params.num_pro_page} offset ${params.num_pro_page * (params.current_page - 1)}`
         };
         var res = await pgsql.select(`"BBZ"."Mrecord"`, temp_params.key, temp_params.condition);
