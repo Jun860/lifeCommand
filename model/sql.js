@@ -28,6 +28,14 @@ sql.prototype = {
         var res = await pgsql.select(`"BBZ"."Mrecord"`, temp_params.key, temp_params.condition);
         return res;
     },
+    select_bytime_all: async function (month) {
+        var temp_params = {
+            key: `sum(money),extract(year from now()- interval '${month} month') as year,extract(month from now()- interval '${month} month') as month`,
+            condition: `where (extract(month from time) = (extract(month from now()- interval '${month} month'))) and (extract(year from time) = extract(year from now()- interval '${month} month'))`
+        }
+        var res = await pgsql.select(`"BBZ"."Mrecord"`, temp_params.key, temp_params.condition);
+        return res;
+    },
     select_bytime_bar: async function (month) {
         var temp_params = {
             key: `action,sum(money) as money`,

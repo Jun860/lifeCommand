@@ -21,6 +21,13 @@ router.get('/select_bytime', async function(req, res, next) {
   res.json(await sql.select_bytime(temp_params.month));
 });
 
+router.get('/select_bytime_all', async function(req, res, next) {
+  var temp_params = req.query;
+  var sql = new sql_model();
+
+  res.json(await sql.select_bytime_all(temp_params.month));
+});
+
 router.get('/select_bytime_bar', async function(req, res, next) {
   var temp_params = req.query;
   var sql = new sql_model();
