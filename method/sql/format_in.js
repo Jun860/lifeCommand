@@ -7,7 +7,8 @@ function mode(params) {
 
     if (params.action && check(params.action)) {
         global.mode = {
-            where: params.where
+            where: params.where,
+            action: params.action
         }
         result.push(`'${params.action}'`);
     } else {

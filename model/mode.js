@@ -2,7 +2,8 @@ function mode() {
     this.set_mode = function (params) {
         console.log(params);
         global.mode = {
-            where:params.where
+            where:params.where,
+            action:params.action
         }
         return true;
     }
