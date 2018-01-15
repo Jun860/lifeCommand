@@ -6,10 +6,6 @@ function mode(params) {
     result.push(`'${new Date().toLocaleString()}'`);
 
     if (params.action && check(params.action)) {
-        global.mode = {
-            where: params.where,
-            action: params.action
-        }
         result.push(`'${params.action}'`);
     } else {
         result.push(`'none'`);
