@@ -38,8 +38,8 @@ sql.prototype = {
     },
     select_bytime_bar: async function (month) {
         var temp_params = {
-            key: `action,sum(money) as money`,
-            condition: `where (extract(month from time) = (extract(month from now()- interval '${month} month'))) and (extract(year from time) = extract(year from now()- interval '${month} month')) and action not in (${key.not_in}) group by action order by money DESC`
+            key: `(action||'-'||things),sum(money) as money`,
+            condition: `where (extract(month from time) = (extract(month from now()- interval '${month} month'))) and (extract(year from time) = extract(year from now()- interval '${month} month')) and action not in (${key.not_in}) group by action,things order by money DESC`
         }
         var res = await pgsql.select(`"BBZ"."Mrecord"`, temp_params.key, temp_params.condition);
         return res;
