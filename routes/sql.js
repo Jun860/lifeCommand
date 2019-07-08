@@ -18,7 +18,7 @@ router.get('/out', async function (req, res, next) {
   var sql = new sql_model();
 
   var csv = await sql.select_all_tocsv(req.query);
-  res.setHeader('Content-disposition', 'attachment; filename=all_student.csv');
+  res.setHeader('Content-disposition', 'attachment; filename=BBZ.csv');
   res.writeHead(200, {
     'Content-Type': 'text/csv'
   });
