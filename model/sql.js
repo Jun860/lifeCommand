@@ -19,7 +19,7 @@ sql.prototype = {
             year = "extract(year from now())";
         }
         var temp_params = {
-            key: `*,to_char(time,'MM-DD') as time_str`,
+            key: `*,to_char(time,'YYYY-MM-DD HH:mm:ss') as time_str`,
             condition: `where extract(year from time) = ${year}`
         };
         var res = await pgsql.select_tocsv(`"BBZ"."Mrecord"`, temp_params.key, temp_params.condition);
