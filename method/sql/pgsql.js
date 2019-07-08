@@ -47,7 +47,7 @@ async function select_tocsv(database, key, condition) {
     var pool = new pg.Pool(config);
     var res;
 
-    const fields = ['time', 'action', 'things', 'money', 'who', 'where'];
+    const fields = ['time_str', 'action', 'things', 'money', 'who', 'where'];
     const json2csvParser = new Json2csvParser({ fields });
 
     try {
