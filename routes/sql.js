@@ -14,6 +14,19 @@ router.get('/select', async function (req, res, next) {
   res.json(await sql.select(req.query));
 });
 
+router.get('/out', async function (req, res, next) {
+  var sql = new sql_model();
+
+  var csv = await sql.select_all_tocsv(req.query);
+  res.setHeader('Content-disposition', 'attachment; filename=BBZ.csv');
+  res.writeHead(200, {
+    'Content-Type': 'text/csv'
+  });
+  res.write(Buffer.from('\xEF\xBB\xBF', 'binary'));
+  res.write(Buffer.from(csv));
+  res.end();
+});
+
 router.get('/select_bytime', async function (req, res, next) {
   var temp_params = req.query;
   var sql = new sql_model();
